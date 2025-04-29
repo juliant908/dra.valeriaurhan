@@ -1,14 +1,14 @@
 @import "tailwindcss";
 
 section:nth-child(odd) {
- background-color: #E0CFBB;
+ background-color: var(--dark-cream);
 }
 
 section:nth-child(even) {
- background-color: #E7D9C7;
+ background-color: var(--cream);
 }
 
 p,
 a {
- font-family: "Open Sans", system-ui, serif;
+ font-family: var(--secondary-font);
 }

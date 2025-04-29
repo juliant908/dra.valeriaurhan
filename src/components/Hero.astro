@@ -6,14 +6,18 @@
     </p>
     <a
       href="#services"
-      class="bg-yellow-500 text-white py-2 px-4 rounded font-bold hover:bg-yellow-600 transition duration-300"
+      class="inline-block btn-cta bg-[var(--bg-button-primary)] text-white py-4 min-w-[200px] rounded-lg hover:bg-yellow-600 text-base transition duration-300"
     >
-      Explore Our Services
+      BOOK NOW
     </a>
   </div>
 </div>
 
 <style>
+  .btn-cta {
+    font-family: var(--primary-font);
+  }
+
   .hero-section {
     position: relative;
     background-image: url("../assets/images/hero.webp");
@@ -22,7 +26,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
+    color: var(--light-cream);
     min-height: 350px;
 
     &::after {

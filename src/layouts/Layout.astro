@@ -18,12 +18,20 @@ import "@fontsource-variable/open-sans";
 </html>
 
 <style>
+  :root {
+    --primary-font: "Playfair Display Variable", system-ui, serif;
+    --secondary-font: "Open Sans Variable", system-ui, sans-serif;
+    --light-cream: #f7f0e8;
+    --dark-cream: #e0cfbb;
+    --cream: #e7d9c7;
+    --bg-button-primary: #bc8f2b;
+  }
   html {
     scroll-behavior: smooth;
   }
 
   body {
-    font-family: "Playfair Display Variable", system-ui, sans-serif;
+    font-family: var(--primary-font);
     margin: 0;
     width: 100%;
     height: 100%;
@@ -31,13 +39,6 @@ import "@fontsource-variable/open-sans";
     color: white;
     overscroll-behavior: none;
     min-height: 100vh;
-  }
-
-  p {
-    font-family: "Open Sans", system-ui, sans-serif;
-    font-size: 1.125rem;
-    line-height: 1.75rem;
-    margin: 0;
   }
 
   @media (prefers-reduced-motion: reduce) {
