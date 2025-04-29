@@ -1,0 +1,28 @@
+---
+import {Image} from "astro:assets";
+import expert_image from "../assets/images/vale.webp";
+---
+
+<div>
+  <div
+    class="expert-section flex items-center justify-center gap-16 text-center lg:max-w-4xl md:max-w-2xl sm: max-w-xl mx-auto my-8"
+  >
+    <div
+      class="border-2 border-[var(--dark-gray)] rounded-t-full bg-[var(--bg-color-image)] flex-1 relative"
+    >
+      <Image
+        src={expert_image}
+        alt="Médica estética y antienvejecimiento en bata blanca"
+      />
+    </div>
+    <div class="flex-1 max-w-[70ch] text-start text-[var(--dark-gray)]">
+      <h2 class="text-4xl mb-6">Meet our expert</h2>
+      <p class="text-[var(--light-gray)] font-light">
+        Dr. [Name] is the founder of Caustria, specializing in aesthetic
+        medicine. With years of experience in injectables, skin treatments, and
+        body contouring, she combines science and artistry to deliver natural,
+        rejuvenating results.
+      </p>
+    </div>
+  </div>
+</div>

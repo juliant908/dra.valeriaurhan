@@ -1,10 +1,10 @@
 @import "tailwindcss";
 
-section:nth-child(odd) {
+section:nth-child(even) {
  background-color: var(--dark-cream);
 }
 
-section:nth-child(even) {
+section:nth-child(odd) {
  background-color: var(--cream);
 }
 
