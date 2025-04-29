@@ -1,0 +1,41 @@
+<div class="hero-section">
+  <div class="container mx-auto text-center py-20">
+    <h1 class="text-4xl font-bold mb-4">Welcome to Our Website</h1>
+    <p class="text-lg mb-8">
+      Discover the best in aesthetic and anti-aging medicine.
+    </p>
+    <a
+      href="#services"
+      class="bg-yellow-500 text-white py-2 px-4 rounded font-bold hover:bg-yellow-600 transition duration-300"
+    >
+      Explore Our Services
+    </a>
+  </div>
+</div>
+
+<style>
+  .hero-section {
+    position: relative;
+    background-image: url("../assets/images/hero.webp");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    min-height: 350px;
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.2);
+    }
+
+    * {
+      z-index: 1;
+    }
+  }
+</style>
