@@ -1,0 +1,46 @@
+---
+import {Image} from "astro:assets";
+import cardImage from "../assets/images/card.webp";
+import Service from "./Service.astro";
+import injectablesIcon from "../assets/images/injectables_icon.webp";
+import skinIcon from "../assets/images/skin_treatment_icon.webp";
+---
+
+<div class="my-12 w-full">
+  <div
+    class="flex flex-col-reverse md:grid md:grid-cols-3 md:items-stretch md:flex-row gap-12 md:gap-24"
+  >
+    <div class="flex-1 self-center md:self-end">
+      <Service
+        serviceTitle="Injectables"
+        serviceSubtitle="Smooth lines & restore volume"
+        iconSrc={injectablesIcon}
+        iconAlt="Icono de inyectables"
+      />
+    </div>
+    <div class="flex-1 self-center md:self-end">
+      <h2
+        class="text-2xl col-span-2 text-center text-[var(--dark-gray)] mb-8 text-nowrap"
+      >
+        Our signature services
+      </h2>
+      <Service
+        serviceTitle="Skin Treatments"
+        serviceSubtitle="Enhance glow & texture"
+        iconSrc={skinIcon}
+        iconAlt="Icono de inyectables"
+      />
+    </div>
+    <div
+      class="border-2 border-[var(--dark-gray)] rounded-t-full bg-[var(--bg-color-image)] flex-1 relative overflow-clip min-h-[350px] aspect-[3/4] md:aspect-auto md:min-h-0"
+    >
+      <div>
+        <Image
+          src={cardImage}
+          alt="Tarjeta de presentación de la doctora Valeria Urhán, médica estética y antienvejecimiento"
+          class="absolute inset-0 w-full h-full object-cover"
+        />
+      </div>
+    </div>
+  </div>
+</div>
