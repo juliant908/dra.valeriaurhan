@@ -5,17 +5,28 @@ import SectionContainer from "../layouts/SectionContainer.astro";
 import Hero from "../components/Hero.astro";
 import Expert from "../components/Expert.astro";
 import Services from "../components/Services.astro";
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Gift from "../components/Gift.astro";
+import Popular from "../components/Popular.astro";
+import CTA from "../components/CTA.astro";
 ---
 
 <Layout>
-  <Hero />
-  <SectionContainer id="expert">
-    <Expert />
-  </SectionContainer>
-  <SectionContainer id="services">
-    <Services />
-  </SectionContainer>
+  <main>
+    <Hero />
+    <SectionContainer id="expert">
+      <Expert />
+    </SectionContainer>
+    <SectionContainer id="services">
+      <Services />
+    </SectionContainer>
+    <SectionContainer id="gifts">
+      <Gift />
+    </SectionContainer>
+    <SectionContainer id="popular">
+      <Popular />
+    </SectionContainer>
+    <SectionContainer id="CTA">
+      <CTA />
+    </SectionContainer>
+  </main>
 </Layout>

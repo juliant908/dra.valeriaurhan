@@ -1,0 +1,12 @@
+---
+const {serviceImage, serviceAltText} = Astro.props;
+import {Image} from "astro:assets";
+---
+
+<div class="flex-col flex gap-6 items-center">
+  <Image src={serviceImage} alt={serviceAltText} class="object-cover" />
+  <button
+    class="bg-[var(--dark-cream)] py-2 px-4 w-fit text-[var(--dark-gray)] rounded-lg border-2 border-[var(--border-button-treatment)]"
+    >BOOK NOW</button
+  >
+</div>

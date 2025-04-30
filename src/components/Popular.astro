@@ -1,0 +1,31 @@
+---
+import Treatment from "./Treatment.astro";
+import injectablesBotoxImage from "../assets/images/injectables_botox.webp";
+import injectablesAcidImage from "../assets/images/injectable_acids.webp";
+import peelingImage from "../assets/images/peeling.webp";
+import mesotherapyImage from "../assets/images/mesotherapy.webp";
+---
+
+<div class="my-16">
+  <h4 class="text-3xl my-10 text-center text-[var(--dark-gray)]">
+    See What's Popular
+  </h4>
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+    <Treatment
+      serviceImage={injectablesBotoxImage}
+      serviceAltText="Modelo haciéndose tratamiento de Botox"
+    />
+    <Treatment
+      serviceImage={peelingImage}
+      serviceAltText="Modelo haciéndose tratamiento de Peeling"
+    />
+    <Treatment
+      serviceImage={injectablesAcidImage}
+      serviceAltText="Modelo haciéndose tratamiento de Ácido Hialurónico"
+    />
+    <Treatment
+      serviceImage={mesotherapyImage}
+      serviceAltText="Modelo haciéndose tratamiento de Mesoterapia"
+    />
+  </div>
+</div>

@@ -1,15 +1,14 @@
-<section class="hero-section">
+<section class="hero-section min-h-[350px] 2xl:min-h-[700px]">
   <div class="container mx-auto text-center py-20">
     <h1 class="text-4xl font-bold mb-4">Welcome to Our Website</h1>
     <p class="text-lg mb-8">
       Discover the best in aesthetic and anti-aging medicine.
     </p>
-    <a
-      href="#services"
-      class="inline-block btn-cta bg-[var(--bg-button-primary)] text-white py-4 min-w-[200px] rounded-lg hover:bg-yellow-600 text-base transition duration-300"
+    <button
+      class="inline-block btn-cta bg-[var(--bg-button-primary)] text-white py-4 min-w-[200px] rounded-lg hover:bg-[var(--btn-hover)] text-base transition duration-300"
     >
       BOOK NOW
-    </a>
+    </button>
   </div>
 </section>
 
@@ -22,12 +21,12 @@
     position: relative;
     background-image: url("../assets/images/hero.webp");
     background-size: cover;
+    background-repeat: no-repeat;
     background-position: center;
     display: flex;
     align-items: center;
     justify-content: center;
     color: var(--light-cream);
-    min-height: 350px;
 
     &::after {
       content: "";

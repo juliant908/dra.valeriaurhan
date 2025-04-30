@@ -8,7 +8,13 @@ section:nth-child(odd) {
  background-color: var(--cream);
 }
 
-p,
-a {
+p {
  font-family: var(--secondary-font);
+}
+
+button {
+ cursor: pointer;
+ font-family: var(--primary-font);
+ font-size: 1rem;
+ font-weight: 400;
 }

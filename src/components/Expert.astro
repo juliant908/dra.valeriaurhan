@@ -8,12 +8,8 @@ import expert_image from "../assets/images/vale.webp";
     class="expert-section flex items-center justify-center flex-col sm:flex-row sm:gap-16 gap-8 text-center my-8"
   >
     <div
-      class="border-2 border-[var(--dark-gray)] rounded-t-full bg-[var(--bg-color-image)] flex-1 relative"
+      class="border-2 border-[var(--dark-gray)] rounded-t-full bg-[var(--bg-color-image)] flex-1 expert lg:min-h-[550px] min-h-[350px] aspect-[3/4] md:aspect-auto relative overflow-clip"
     >
-      <Image
-        src={expert_image}
-        alt="Médica estética y antienvejecimiento en bata blanca"
-      />
     </div>
     <div class="flex-1 max-w-[70ch] text-start text-[var(--dark-gray)]">
       <h2 class="text-4xl mb-6">Meet our expert</h2>
@@ -26,3 +22,12 @@ import expert_image from "../assets/images/vale.webp";
     </div>
   </div>
 </div>
+
+<style>
+  .expert {
+    background-image: url(../assets/images/vale_new.webp);
+    background-size: cover;
+    background-position: right;
+    background-repeat: no-repeat;
+  }
+</style>
