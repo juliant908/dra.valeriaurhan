@@ -110,12 +110,14 @@ import "@fontsource-variable/inter";
   document.addEventListener("DOMContentLoaded", () => {
     const loader = document.getElementById("loader");
     const content = document.getElementById("content");
+    const video = document.querySelector("video");
 
-    if (!loader || !content) return;
-    setTimeout(() => {
+    if (!loader || !content || !video) return;
+
+    video.addEventListener("canplay", () => {
       loader.style.display = "none";
       content.style.display = "block";
-    }, 1000); // 1 second delay
+    })
 
     // Simple fade-in on scroll observer
     const observer = new IntersectionObserver(
