@@ -1,0 +1,128 @@
+<div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+  <div class="comparison-slider interactive-hover">
+    <img
+      src="https://placehold.co/800x600/D6C6B8/FFFFFF?text=After"
+      alt="After"
+      class="w-full h-full object-cover rounded-lg"
+    />
+    <div class="before-image">
+      <img
+        src="https://placehold.co/800x600/EAE2D9/B99767?text=Before"
+        alt="Before"
+        class="w-full h-full object-cover"
+      />
+    </div>
+    <div class="slider-handle"></div>
+  </div>
+  <div class="text-center md:text-left">
+    <p class="font-serif text-2xl italic text-gray-700">
+      "Dr. Vance is a true artist. She listened to my concerns and delivered
+      results that exceeded my expectations. I feel refreshed and more confident
+      than ever."
+    </p>
+    <p class="mt-4 font-semibold text-right">- Olivia R.</p>
+  </div>
+</div>
+
+<style>
+  @reference '../styles/global.css';
+
+  .comparison-slider {
+    position: relative;
+    overflow: hidden;
+    border-radius: 0.5rem;
+  }
+
+  .comparison-slider .before-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);
+  }
+
+  .comparison-slider .slider-handle {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    height: 100%;
+    width: 4px;
+    background-color: white;
+    transform: translateX(-50%);
+    cursor: ew-resize;
+  }
+
+  .comparison-slider .slider-handle::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 40px;
+    border: 2px solid white;
+    border-radius: 50%;
+    background: #b99767;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 17l-5-5 5-5M18 17l5-5-5-5"/></svg>');
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  .comparison-slider img {
+    user-select: none;
+    -webkit-user-select: none; /* For Safari */
+    pointer-events: none;
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const sliders = document.querySelectorAll(".comparison-slider");
+
+    sliders.forEach((slider) => {
+      const handle = slider.querySelector(".slider-handle") as HTMLElement;
+      const beforeImg = slider.querySelector(".before-image") as HTMLElement;
+      let dragging = false;
+
+      const drag = (e: MouseEvent | TouchEvent) => {
+        if (!dragging) return;
+        const rect = slider.getBoundingClientRect();
+        let x =
+          (e instanceof MouseEvent ? e.clientX : e.touches[0].clientX) -
+          rect.left;
+        if (x < 0) x = 0;
+        if (x > rect.width) x = rect.width;
+        const newPosition = (x / rect.width) * 100;
+        beforeImg.style.clipPath =
+          `polygon(0 0, ${newPosition}% 0, ${newPosition}% 100%, 0 100%)`;
+        handle.style.left = `${newPosition}%`;
+        handle.style.setProperty("left", `${newPosition}%`);
+      };
+
+      const stopDrag = () => {
+        dragging = false;
+        document.removeEventListener("mousemove", drag);
+        document.removeEventListener("touchmove", drag);
+        document.removeEventListener("mouseup", stopDrag);
+        document.removeEventListener("touchend", stopDrag);
+      };
+
+      const startDrag = (e: Event) => {
+        dragging = true;
+        e.preventDefault();
+        document.addEventListener("mousemove", drag);
+        document.addEventListener("touchmove", drag);
+        document.addEventListener("mouseup", stopDrag);
+        document.addEventListener("touchend", stopDrag);
+      };
+
+      handle?.addEventListener("mousedown", startDrag);
+      handle?.addEventListener("touchstart", startDrag);
+    });
+  });
+</script>

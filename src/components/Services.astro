@@ -1,46 +1,104 @@
----
-import {Image} from "astro:assets";
-import cardImage from "../assets/images/card.webp";
-import Service from "./Service.astro";
-import injectablesIcon from "../assets/images/injectables_icon.webp";
-import skinIcon from "../assets/images/skin_treatment_icon.webp";
----
+<style>
+  @reference '../styles/global.css';
 
-<div class="my-12 w-full">
-  <div
-    class="flex flex-col-reverse md:grid md:grid-cols-3 md:items-stretch md:flex-row gap-12 md:gap-24"
-  >
-    <div class="flex-1 self-center md:self-end">
-      <Service
-        serviceTitle="Injectables"
-        serviceSubtitle="Smooth lines & restore volume"
-        iconSrc={injectablesIcon}
-        iconAlt="Icono de inyectables"
-      />
-    </div>
-    <div class="flex-1 self-center md:self-end">
-      <h2
-        class="text-2xl col-span-2 text-center text-[var(--dark-gray)] mb-8 text-nowrap"
-      >
-        Our signature services
-      </h2>
-      <Service
-        serviceTitle="Skin Treatments"
-        serviceSubtitle="Enhance glow & texture"
-        iconSrc={skinIcon}
-        iconAlt="Icono de inyectables"
-      />
-    </div>
+  .service-card {
+    transform-style: preserve-3d;
+    transition: transform 0.5s ease;
+  }
+</style>
+
+<section id="services" class="fade-in my-12">
+  <h2 class="section-title">Signature Treatments</h2>
+  <p class="section-subtitle">
+    A curated selection of services designed to rejuvenate, restore, and refine,
+    each tailored to your unique goals.
+  </p>
+  <div class="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <!-- Service Card 1 -->
     <div
-      class="border-2 border-[var(--dark-gray)] rounded-t-full bg-[var(--bg-color-image)] flex-1 relative overflow-clip min-h-[350px] aspect-[3/4] md:aspect-auto md:min-h-0"
+      class="bg-white rounded-lg shadow-lg overflow-hidden group service-card"
     >
-      <div>
-        <Image
-          src={cardImage}
-          alt="Tarjeta de presentación de la doctora Valeria Urhán, médica estética y antienvejecimiento"
-          class="absolute inset-0 w-full h-full object-cover"
-        />
+      <img
+        src="https://placehold.co/600x400/EAE2D9/B99767?text=Rejuvenate"
+        alt="Rejuvenate"
+        class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500"
+      />
+      <div class="p-8">
+        <h3 class="text-xl font-semibold tracking-tight">Liquid Facelifts</h3>
+        <p class="mt-3 text-gray-500">
+          Restore volume and soften lines with dermal fillers and
+          neuromodulators for a subtle, lifted appearance.
+        </p>
+        <a href="#" class="inline-block mt-5 text-[#B99767] font-semibold"
+          >Discover More &rarr;</a
+        >
+      </div>
+    </div>
+    <!-- Service Card 2 -->
+    <div
+      class="bg-white rounded-lg shadow-lg overflow-hidden group service-card"
+    >
+      <img
+        src="https://placehold.co/600x400/D6C6B8/FFFFFF?text=Restore"
+        alt="Restore"
+        class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500"
+      />
+      <div class="p-8">
+        <h3 class="text-xl font-semibold tracking-tight">Skin Resurfacing</h3>
+        <p class="mt-3 text-gray-500">
+          Advanced laser therapies to improve skin texture, reduce pigmentation,
+          and stimulate collagen for a youthful glow.
+        </p>
+        <a href="#" class="inline-block mt-5 text-[#B99767] font-semibold"
+          >Discover More &rarr;</a
+        >
+      </div>
+    </div>
+    <!-- Service Card 3 -->
+    <div
+      class="bg-white rounded-lg shadow-lg overflow-hidden group service-card"
+    >
+      <img
+        src="https://placehold.co/600x400/C1B09E/FFFFFF?text=Refine"
+        alt="Refine"
+        class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500"
+      />
+      <div class="p-8">
+        <h3 class="text-xl font-semibold tracking-tight">Facial Contouring</h3>
+        <p class="mt-3 text-gray-500">
+          Define your natural features with jawline definition, cheek
+          augmentation, and non-surgical rhinoplasty.
+        </p>
+        <a href="#" class="inline-block mt-5 text-[#B99767] font-semibold"
+          >Discover More &rarr;</a
+        >
       </div>
     </div>
   </div>
-</div>
+</section>
+
+<script>
+  const cards = document.querySelectorAll(".service-card");
+
+  cards.forEach((card) => {
+    card.addEventListener("mousemove", (e) => {
+      if (!e.currentTarget) return;
+      const target = e.currentTarget as HTMLElement;
+      const rect = target.getBoundingClientRect();
+      const x = (e as MouseEvent).clientX - rect.left;
+      const y = (e as MouseEvent).clientY - rect.top;
+      const {width, height} = rect;
+      const rotateX = (-10 * (y - height / 2)) / (height / 2);
+      const rotateY = (10 * (x - width / 2)) / (width / 2);
+
+      target.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.05, 1.05, 1.05)`;
+    });
+
+    card.addEventListener("mouseleave", (e) => {
+      if (e.currentTarget) {
+        (e.currentTarget as HTMLElement).style.transform =
+          "perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)";
+      }
+    });
+  });
+</script>

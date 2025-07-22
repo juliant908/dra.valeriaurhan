@@ -1,13 +1,5 @@
 @import "tailwindcss";
 
-section:nth-child(even) {
- background-color: var(--dark-cream);
-}
-
-section:nth-child(odd) {
- background-color: var(--cream);
-}
-
 p {
  font-family: var(--secondary-font);
 }
@@ -18,3 +10,49 @@ button {
  font-size: 1rem;
  font-weight: 400;
 }
+
+.font-serif {
+ font-family: 'Playfair Display', serif;
+}
+
+.text-balance {
+ text-wrap: balance;
+}
+
+.gold-accent {
+ color: #B99767;
+}
+
+.fade-in {
+ opacity: 0;
+ transform: translateY(30px);
+ transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.is-visible {
+ opacity: 1;
+ transform: translateY(0);
+}
+
+/* Tailwind */
+.btn {
+ @apply py-3 px-8 rounded-full font-semibold tracking-wide transition-all duration-300 transform hover:scale-105;
+}
+
+.btn-primary {
+ @apply bg-[#B99767] text-white hover:bg-[#a88a5e];
+}
+
+.btn-secondary {
+ @apply border border-[#B99767] text-[#B99767] hover:bg-[#B99767] hover:text-white;
+}
+
+/* Section Titles */
+.section-title {
+ @apply font-serif text-4xl md:text-5xl font-normal text-center tracking-tight;
+}
+
+.section-subtitle {
+ @apply text-center text-lg text-gray-500 mt-4 max-w-2xl mx-auto text-balance;
+}
+

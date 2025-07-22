@@ -1,44 +1,41 @@
-<section class="hero-section min-h-[350px] 2xl:min-h-[700px]">
-  <div class="container mx-auto text-center py-20">
-    <h1 class="text-4xl font-bold mb-4">Welcome to Our Website</h1>
-    <p class="text-lg mb-8">
-      Discover the best in aesthetic and anti-aging medicine.
-    </p>
-    <button
-      class="inline-block btn-cta bg-[var(--bg-button-primary)] text-white py-4 min-w-[200px] rounded-lg hover:bg-[var(--btn-hover)] text-base transition duration-300"
+<section
+  class="h-screen w-full flex items-center justify-center relative overflow-hidden"
+>
+  <video autoplay loop muted playsinline class="hero-video-bg">
+    <!-- You can replace this with a professional video of a serene clinic, abstract textures, etc. -->
+    <source src="./video.mp4" type="video/mp4" />
+  </video>
+  <div class="absolute inset-0 bg-black/40"></div>
+  <div class="relative text-center text-white p-6 z-10 fade-in is-visible">
+    <h1
+      class="font-serif text-4xl md:text-6xl lg:text-7xl font-normal tracking-tight leading-tight text-balance"
     >
-      BOOK NOW
-    </button>
+      Confidence, Redefined.
+    </h1>
+    <p
+      class="mt-4 text-lg md:text-xl max-w-2xl mx-auto font-light text-balance"
+    >
+      Expert aesthetic medicine for a naturally radiant you. Discover a
+      personalized approach to timeless beauty.
+    </p>
+    <div class="mt-10">
+      <a href="#contact" class="btn btn-primary">Book a Consultation</a>
+    </div>
   </div>
 </section>
 
 <style>
-  .btn-cta {
-    font-family: var(--primary-font);
-  }
-
-  .hero-section {
-    position: relative;
-    background-image: url("../assets/images/hero.webp");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--light-cream);
-
-    &::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.2);
-    }
-
-    * {
-      z-index: 1;
-    }
+  /* Hero Video Background */
+  .hero-video-bg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: auto;
+    height: auto;
+    min-width: 100%;
+    min-height: 100%;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+    object-fit: cover;
   }
 </style>

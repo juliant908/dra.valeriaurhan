@@ -1,0 +1,94 @@
+<style>
+  /* Philosophy Scrollytelling Section */
+  #philosophy-section {
+    position: relative;
+    height: 300vh;
+    /* Provides scroll space */
+  }
+
+  #philosophy-sticky-container {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  .philosophy-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 2.5rem;
+    text-align: center;
+    opacity: 0;
+    max-width: 800px;
+  }
+
+  .philosophy-bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    transition: opacity 1s ease-in-out;
+  }
+</style>
+
+<!-- Philosophy Scrollytelling Section -->
+<section id="philosophy-section">
+  <div id="philosophy-sticky-container">
+    <div
+      class="philosophy-bg"
+      style="background-image: url('https://placehold.co/1920x1080/202020/FFFFFF?text='); opacity: 1;"
+    >
+    </div>
+    <div
+      class="philosophy-bg"
+      style="background-image: url('https://placehold.co/1920x1080/303030/FFFFFF?text='); opacity: 0;"
+    >
+    </div>
+    <div class="font-serif philosophy-text text-balance">
+      The Art of Subtlety
+    </div>
+    <div class="font-serif philosophy-text text-balance">
+      Bringing inner confidence to the surface
+    </div>
+    <div class="font-serif philosophy-text text-balance">
+      Results so natural, they are simply the best version of you.
+    </div>
+  </div>
+</section>
+
+<script>
+  import {gsap} from "gsap";
+  import {ScrollTrigger} from "gsap/ScrollTrigger";
+
+  document.addEventListener("DOMContentLoaded", () => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    // --- Philosophy Scrollytelling Animation ---
+    const philosophyTimeline = gsap.timeline({
+      scrollTrigger: {
+        trigger: "#philosophy-section",
+        pin: "#philosophy-sticky-container",
+        start: "top top",
+        end: "+=200%", // 200% of the viewport height
+        scrub: 1,
+      },
+    });
+    const philosophyTexts: HTMLElement[] = gsap.utils.toArray(".philosophy-text");
+    const philosophyBgs: HTMLElement[] = gsap.utils.toArray(".philosophy-bg");
+
+    philosophyTimeline
+      .to(philosophyTexts[0], {opacity: 1, duration: 1})
+      .to(philosophyTexts[0], {opacity: 0, duration: 1}, "+=1")
+      .to(philosophyBgs[1], {opacity: 1, duration: 1}, "-=1")
+
+      .to(philosophyTexts[1], {opacity: 1, duration: 1})
+      .to(philosophyTexts[1], {opacity: 0, duration: 1}, "+=1")
+
+      .to(philosophyTexts[2], {opacity: 1, duration: 1})
+      .to(philosophyTexts[2], {opacity: 0, duration: 1}, "+=1.5");
+  });
+</script>
