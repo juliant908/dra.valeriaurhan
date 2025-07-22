@@ -1,3 +1,8 @@
+---
+import { Image } from "astro:assets";
+import Vale from "../assets/images/vale_new.webp";
+---
+
 <section id="about" class="fade-in my-12">
   <div class="grid grid-cols-1 md:grid-cols-12 items-center gap-10">
     <div class="md:col-span-7 lg:col-span-6 relative">
@@ -33,9 +38,9 @@
       <div
         class="w-full h-[500px] md:h-full rounded-lg shadow-xl overflow-hidden"
       >
-        <img
-          src="https://placehold.co/600x750/EAE2D9/4B4B4B?text=Dr.+Eleanor+Vance"
-          alt="Dr. Eleanor Vance"
+        <Image
+          src={Vale}
+          alt="Doctora Valeria Urhan"
           class="w-full h-full object-cover"
         />
       </div>

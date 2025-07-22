@@ -1,13 +1,19 @@
+---
+import { Image } from "astro:assets";
+import amigaBefore from "../assets/images/before/amiga-tata-before.webp"
+import amigaAfter from "../assets/images/after/amiga-tata-after.webp"
+---
+
 <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
   <div class="comparison-slider interactive-hover">
-    <img
-      src="https://placehold.co/800x600/D6C6B8/FFFFFF?text=After"
+    <Image
+      src={amigaAfter}
       alt="After"
       class="w-full h-full object-cover rounded-lg"
     />
     <div class="before-image">
-      <img
-        src="https://placehold.co/800x600/EAE2D9/B99767?text=Before"
+      <Image
+        src={amigaBefore}
         alt="Before"
         class="w-full h-full object-cover"
       />
