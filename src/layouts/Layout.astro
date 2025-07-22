@@ -23,14 +23,22 @@ import "@fontsource-variable/inter";
     <title>Dra. Valeria Urhan Medicina estética y antienvejecimiento</title>
   </head>
   <body>
-    <slot />
+    <div id="loader" class="bg-gradient-to-br from-[#B99767] to-[#fff7e0]">
+      <div class="flex flex-col justify-center items-center gap-2 text-white">
+        <div class="spinner"></div>
+        <span>Estamos creando tu experiencia...</span>
+      </div>
+    </div>
+    <div id="content" style="display: none;">
+      <slot />
+    </div>
   </body>
 </html>
 
 <style>
   :root {
     --primary-font: "Playfair Display Variable", system-ui, serif;
-    --secondary-font: "Open Sans Variable", system-ui, sans-serif;
+    --secondary-font: "Inter", system-ui, sans-serif;
     --light-cream: #f7f0e8;
     --dark-cream: #e0cfbb;
     --cream: #e7d9c7;
@@ -61,6 +69,36 @@ import "@fontsource-variable/inter";
     text-wrap: balance;
   }
 
+  #loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+  }
+
+  .spinner {
+    border: 4px solid rgba(255,255,255, 0.8);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border-left-color: #bc8f2b;
+    animation: spin 1s ease infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
   @media (prefers-reduced-motion: reduce) {
     * {
       scroll-behavior: auto;
@@ -70,6 +108,15 @@ import "@fontsource-variable/inter";
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
+    const loader = document.getElementById("loader");
+    const content = document.getElementById("content");
+
+    if (!loader || !content) return;
+    setTimeout(() => {
+      loader.style.display = "none";
+      content.style.display = "block";
+    }, 1000); // 1 second delay
+
     // Simple fade-in on scroll observer
     const observer = new IntersectionObserver(
       (entries) => {
@@ -91,6 +138,7 @@ import "@fontsource-variable/inter";
 
     // Set current year in footer
     const yearElement = document.getElementById("year");
-    if (yearElement) yearElement.textContent = new Date().getFullYear().toString();
+    if (yearElement)
+      yearElement.textContent = new Date().getFullYear().toString();
   });
 </script>
