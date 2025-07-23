@@ -8,13 +8,11 @@ import "@fontsource-variable/inter";
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
     <meta name="generator" content={Astro.generator} />
     <meta
       name="description"
@@ -23,15 +21,7 @@ import "@fontsource-variable/inter";
     <title>Dra. Valeria Urhan Medicina estética y antienvejecimiento</title>
   </head>
   <body>
-    <div id="loader" class="bg-gradient-to-br from-[#B99767] to-[#fff7e0]">
-      <div class="flex flex-col justify-center items-center gap-2 text-white">
-        <div class="spinner"></div>
-        <span>Estamos creando tu experiencia...</span>
-      </div>
-    </div>
-    <div id="content" style="display: none;">
-      <slot />
-    </div>
+    <slot />
   </body>
 </html>
 
@@ -109,31 +99,6 @@ import "@fontsource-variable/inter";
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
-    const loader = document.getElementById("loader");
-    const content = document.getElementById("content");
-    const video = document.getElementById("hero-video") as HTMLVideoElement;
-
-    if (!loader || !content) return;
-
-    loader.style.display = "flex";
-    content.style.display = "none";
-
-    const showContent = () => {
-      loader.style.display = "none";
-      content.style.display = "block";
-    };
-
-    if(!video) setTimeout(showContent, 1000);
-    // If the video is already ready, show the content immediately.
-    if (video.readyState >= 4) {
-      showContent();
-    } else {
-      video.addEventListener("canplaythrough", showContent, {once: true});
-      // Fallback timeout in case the video takes too long or fails to load.
-      setTimeout(showContent, 5000); // 5 seconds
-    }
-    
-
     // Simple fade-in on scroll observer
     const observer = new IntersectionObserver(
       (entries) => {

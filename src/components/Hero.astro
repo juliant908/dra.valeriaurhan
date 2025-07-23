@@ -1,18 +1,14 @@
+---
+import { Image } from "astro:assets";
+import HeroHorizontal from "../assets/images/hero-horizontal.webp"
+import HeroVertical from "../assets/images/hero-vertical.webp"
+---
+
 <section
   class="h-[100dvh] w-full flex items-center justify-center relative overflow-hidden"
 >
-  <video id="hero-video" autoplay loop muted playsinline class="hero-video-bg">
-    <source
-      src="video/aesthetic_medicine_procedure_1920_1080.mp4"
-      media="(min-width: 768px)"
-      type="video/mp4"
-    />
-    <source
-      src="video/aesthetic_medicine_procedure_1080x1920.mp4"
-      media="(max-width: 767px)"
-      type="video/mp4"
-    />
-  </video>
+  <Image src={HeroHorizontal} alt="Woman getting a treatment" class="hero-bg hidden md:block" />
+  <Image src={HeroVertical} alt="Woman getting a treatment" class="hero-bg block md:hidden" />
   <div class="absolute inset-0 bg-black/40"></div>
   <div class="relative text-center text-white p-6 z-10 fade-in is-visible">
     <h1
@@ -34,7 +30,7 @@
 
 <style>
   /* Hero Video Background */
-  .hero-video-bg {
+  .hero-bg {
     position: absolute;
     top: 50%;
     left: 50%;
