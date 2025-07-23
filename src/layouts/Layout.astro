@@ -75,6 +75,7 @@ import "@fontsource-variable/inter";
     left: 0;
     width: 100%;
     height: 100%;
+    background-color: #fdfbf8;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -82,7 +83,7 @@ import "@fontsource-variable/inter";
   }
 
   .spinner {
-    border: 4px solid rgba(255,255,255, 0.8);
+    border: 4px solid rgba(0, 0, 0, 0.1);
     width: 36px;
     height: 36px;
     border-radius: 50%;
@@ -110,14 +111,28 @@ import "@fontsource-variable/inter";
   document.addEventListener("DOMContentLoaded", () => {
     const loader = document.getElementById("loader");
     const content = document.getElementById("content");
-    const video = document.querySelector("video");
+    const video = document.getElementById("hero-video") as HTMLVideoElement;
 
-    if (!loader || !content || !video) return;
+    if (!loader || !content) return;
 
-    video.addEventListener("canplay", () => {
+    loader.style.display = "flex";
+    content.style.display = "none";
+
+    const showContent = () => {
       loader.style.display = "none";
       content.style.display = "block";
-    })
+    };
+
+    if(!video) setTimeout(showContent, 1000);
+    // If the video is already ready, show the content immediately.
+    if (video.readyState >= 4) {
+      showContent();
+    } else {
+      video.addEventListener("canplaythrough", showContent, {once: true});
+      // Fallback timeout in case the video takes too long or fails to load.
+      setTimeout(showContent, 5000); // 5 seconds
+    }
+    
 
     // Simple fade-in on scroll observer
     const observer = new IntersectionObserver(
